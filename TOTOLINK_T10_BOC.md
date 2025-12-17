@@ -1,4 +1,9 @@
-# T10 V2_Firmware V4.1.8cu.5083_B20200521 BOF
+# TOTOLINK T10 Stack-Based Buffer Overflow in cstecgi.cgi (No PoC)
+
+## Affected Products
+- TOTOLINK T10 Firmware 4.1.8cu.5083 (confirmed)
+- Likely also 4.1.8cu.5207
+- Other versions with same cstecgi.cgi behavior
 
 ## download address
 
@@ -61,3 +66,4 @@ In emulated environments, this initialization fails, preventing execution of the
 
 
 ![image-20251217212027993](image-20251217212027993.png)
+
