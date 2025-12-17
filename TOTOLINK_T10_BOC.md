@@ -11,11 +11,11 @@ https://www.totolink.net/home/menu/detail/menu_listtpl/download/id/172/ids/36.ht
 A stack-based buffer overflow vulnerability exists in the HTTP login request handling logic of the TOTOLINK T10 router.
  The issue is located in the `/cgi-bin/cstecgi.cgi` binary, where user-controlled input from an HTTP request is written into a fixed-size stack buffer using the `sprintf` function without proper bounds checking.
 
-![image-20251217211324662](.\image-20251217211324662.png)
+![image-20251217211324662](image-20251217211324662.png)
 
 During processing of a login request (`action=login`), the application constructs a JSON string using attacker-controlled data, including the HTTP request body and HTTP header values. This data is written into a fixed-size stack buffer (`v41[4096]`) using `sprintf`, which does not enforce any length restrictions. As a result, excessive input may cause a buffer overflow, leading to memory corruption and potential denial of service
 
-![image-20251217211348859](.\image-20251217211348859.png)
+![image-20251217211348859](image-20251217211348859.png)
 
 
 
@@ -59,4 +59,5 @@ Reproduction in an emulated environment is not possible due to hardware-specific
 
 In emulated environments, this initialization fails, preventing execution of the affected code path. On real devices, this condition is satisfied during normal operation.
 
-![image-20251217212027993](.\image-20251217212027993.png)
+
+![image-20251217212027993](image-20251217212027993.png)
