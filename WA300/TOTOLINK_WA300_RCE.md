@@ -20,7 +20,7 @@ program retrieves user-influenced data from CGI environment variables, including
 `UPLOAD_FILENAME` and `CONTENT_LENGTH`. These values originate from the HTTP upload
 request and are not properly validated or sanitized.
 
-![image-20260106054403912](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260106054403912.png)
+![image-20260106054403912](image-20260106054403912.png)
 
 During request handling, the value of `UPLOAD_FILENAME` is directly embedded into
 a shell command using the `sprintf` function. The constructed command is subsequently
@@ -34,7 +34,7 @@ execution in the context of the web service.
 
 Here is the sub_401510() function,it didn't do any validation or escaping operation.
 
-![image-20260106054551129](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260106054551129.png)
+![image-20260106054551129](image-20260106054551129.png)
 
 ## Root Cause
 
@@ -79,7 +79,7 @@ that a system command was executed using attacker-influenced input.
 
 The following figure demonstrates the verification process.
 
-![image-20260106055158216](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260106055158216.png)
+![image-20260106055158216](image-20260106055158216.png)
 
 ``````bash
 echo hahaha > just_a_test_name 
@@ -88,4 +88,5 @@ QUERY_STRING="action=upload" CONTENT_LENGTH=100 UPLOAD_FILENAME="just_a_test_nam
 qemu-mips -L . ./web_cste/cgi-bin/cstecgi.cgi
 ls -l just_a_test_name   
 ``````
+
 
